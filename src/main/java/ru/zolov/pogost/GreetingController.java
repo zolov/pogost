@@ -1,6 +1,7 @@
 package ru.zolov.pogost;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.source.IterableConfigurationPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.zolov.pogost.domain.Message;
 import ru.zolov.pogost.repos.MessageRepo;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +27,6 @@ public class GreetingController {
 
     @GetMapping
     public String main(Map<String, Object> model){
-
         Iterable<Message> messages = messageRepo.findAll();
         model.put("messages", messages);
         return "main";
@@ -42,7 +43,12 @@ public class GreetingController {
 
     @PostMapping("/filter")
     public String filter (@RequestParam String filter, Map<String, Object> model){
-        List<Message> messages = messageRepo.findByTag(filter);
+        Iterable<Message> messages;
+    if (filter != null && !filter.isEmpty()) {
+        messages = messageRepo.findByTag(filter);
+    } else {
+        messages = messageRepo.findAll();
+    }
         model.put("messages", messages);
         return "main";
     }
