@@ -1,6 +1,6 @@
-<html>
+<#import "parts/common.ftlh" as common>
 
-<body>
+<@common.page>
 <div>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
@@ -26,7 +26,7 @@
         <b>{{id}}</b>
         <span>{{text}}</span>
         <i>{{tag}}</i>
+        <strong>{{authorName}}</strong>
     </div>
 {{/messages}}
-</body>
-</html>
+</@common.page>
