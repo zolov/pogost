@@ -21,3 +21,5 @@ a
 1src/main/java/ru/zolov/pogost/domain/Message.java,3/6/364639f802948e8cc7f42f6560a6f370d8352184
 l
 <src/main/java/ru/zolov/pogost/controller/MainController.java,3/0/303f355f5b57704e908e8d90d50a5bff516d3dae
+Z
+*src/main/resources/templates/greeting.ftlh,8/b/8bd8ac254d6f38403df3cd679f7e17fd5c295dd2
